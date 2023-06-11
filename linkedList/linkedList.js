@@ -128,6 +128,18 @@ class LinkedList {
         }
         console.log(str);
     }
+
+    removeLoop(head){
+        let temp = head;
+        while (temp.next !== null){
+            temp.element = -(temp.element);
+            if(temp.next.element < 0){
+                temp.next = null;
+                break;
+            }
+            temp = temp.next;
+        }
+    }
 }
 
 let linkedList = new LinkedList();
@@ -149,11 +161,13 @@ linkedList.add(16);
 linkedList.add(86);
 linkedList.add(96);
 linkedList.add(116);
+linkedList.removeLoop(linkedList.head);
+linkedList.printList();
 // linkedList.printList();
 // linkedList.addAtIndex(1, 0);
 // linkedList.printList();
 // linkedList.addAtIndex(4, 3);
-linkedList.printList();
+// linkedList.printList();
 // linkedList.printListByRecursion(linkedList.head, "");
 // linkedList.printListReverseByRecursion(linkedList.head);
 // linkedList.removeFromIndex(5);
@@ -163,5 +177,5 @@ linkedList.printList();
 // let endTime1 = Date.now();
 // console.log("reverseIterative taking time " + (endTime1 - startTime1)+ " ms");
 // linkedList.printList();
-linkedList.head = linkedList.reverseRecursion(linkedList.head);
-linkedList.printList()
+// linkedList.head = linkedList.reverseRecursion(linkedList.head);
+// linkedList.printList()
